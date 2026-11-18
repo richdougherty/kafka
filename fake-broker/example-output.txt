@@ -1,0 +1,85 @@
+
+######## stock kafka-clients 4.4.0, eager, close(Duration.ZERO)
+joined, assignment [t-0], consumed 0 records
+rejoin's JoinGroup sent: true
+close(PT0S) HUNG (still running after 15 s)
+    at org.apache.kafka.common.network.Selector.select(Selector.java:880)
+    at org.apache.kafka.common.network.Selector.poll(Selector.java:470)
+    at org.apache.kafka.clients.NetworkClient.poll(NetworkClient.java:711)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.poll(ConsumerNetworkClient.java:300)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.awaitMetadataUpdate(ConsumerNetworkClient.java:180)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.awaitMetadataUpdate(ConsumerNetworkClient.java:166)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.ensureFreshMetadata(ConsumerNetworkClient.java:193)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.updateGroupSubscription(ConsumerCoordinator.java:601)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.onLeaderElected(ConsumerCoordinator.java:680)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.onLeaderElected(AbstractCoordinator.java:775)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator$JoinGroupResponseHandler.handle(AbstractCoordinator.java:679)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator$JoinGroupResponseHandler.handle(AbstractCoordinator.java:640)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator$CoordinatorResponseHandler.onSuccess(AbstractCoordinator.java:1317)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator$CoordinatorResponseHandler.onSuccess(AbstractCoordinator.java:1292)
+    at org.apache.kafka.clients.consumer.internals.RequestFuture$1.onSuccess(RequestFuture.java:206)
+    at org.apache.kafka.clients.consumer.internals.RequestFuture.fireSuccess(RequestFuture.java:169)
+    at org.apache.kafka.clients.consumer.internals.RequestFuture.complete(RequestFuture.java:129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient$RequestFutureCompletionHandler.fireCompletion(ConsumerNetworkClient.java:636)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.firePendingCompletedRequests(ConsumerNetworkClient.java:448)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.poll(ConsumerNetworkClient.java:332)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.pollNoWakeup(ConsumerNetworkClient.java:341)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.maybeLeaveGroup(AbstractCoordinator.java:1180)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1135)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$1(ClassicKafkaConsumer.java:1160)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1050)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1156)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1130)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1112)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1877)
+RESULT: BUG
+
+######## stock kafka-clients 4.4.0, cooperative, close(Duration.ZERO)
+joined, assignment [t-0], consumed 5 records
+rejoin's JoinGroup sent: true
+close(PT0S) HUNG (still running after 15 s)
+    at org.apache.kafka.common.network.Selector.select(Selector.java:880)
+    at org.apache.kafka.common.network.Selector.poll(Selector.java:470)
+    at org.apache.kafka.clients.NetworkClient.poll(NetworkClient.java:711)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.poll(ConsumerNetworkClient.java:300)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.awaitMetadataUpdate(ConsumerNetworkClient.java:180)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.awaitMetadataUpdate(ConsumerNetworkClient.java:166)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.ensureFreshMetadata(ConsumerNetworkClient.java:193)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.updateGroupSubscription(ConsumerCoordinator.java:601)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.onLeaderElected(ConsumerCoordinator.java:680)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.onLeaderElected(AbstractCoordinator.java:775)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator$JoinGroupResponseHandler.handle(AbstractCoordinator.java:679)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator$JoinGroupResponseHandler.handle(AbstractCoordinator.java:640)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator$CoordinatorResponseHandler.onSuccess(AbstractCoordinator.java:1317)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator$CoordinatorResponseHandler.onSuccess(AbstractCoordinator.java:1292)
+    at org.apache.kafka.clients.consumer.internals.RequestFuture$1.onSuccess(RequestFuture.java:206)
+    at org.apache.kafka.clients.consumer.internals.RequestFuture.fireSuccess(RequestFuture.java:169)
+    at org.apache.kafka.clients.consumer.internals.RequestFuture.complete(RequestFuture.java:129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient$RequestFutureCompletionHandler.fireCompletion(ConsumerNetworkClient.java:636)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.firePendingCompletedRequests(ConsumerNetworkClient.java:448)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.poll(ConsumerNetworkClient.java:332)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.poll(ConsumerNetworkClient.java:248)
+    at org.apache.kafka.clients.consumer.internals.ConsumerNetworkClient.poll(ConsumerNetworkClient.java:232)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.commitOffsetsSync(ConsumerCoordinator.java:1162)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.maybeAutoCommitOffsetsSync(ConsumerCoordinator.java:1189)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1023)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$1(ClassicKafkaConsumer.java:1160)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1050)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1156)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1130)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1112)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1877)
+RESULT: BUG
+
+######## fixed kafka-clients 4.4.0, eager, close(Duration.ZERO)
+joined, assignment [t-0], consumed 0 records
+rejoin's JoinGroup sent: true
+close(PT0S) returned in 31 ms
+RESULT: OK
+
+######## fixed kafka-clients 4.4.0, cooperative, close(Duration.ZERO)
+joined, assignment [t-0], consumed 5 records
+rejoin's JoinGroup sent: true
+close(PT0S) returned in 35 ms
+RESULT: OK
