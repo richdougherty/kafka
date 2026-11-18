@@ -1,0 +1,144 @@
+
+######## stock kafka-clients 4.4.0, round 1 of 5 
+fenced heartbeats 1, FencedInstanceIdException caught 1; rejoined; then a rebalance: its JoinGroup in flight
+heartbeat threads before close():
+    #26 WAITING  dropped by pollHeartbeat, not closed
+    #28 WAITING  the consumer's current heartbeat thread
+close(PT5S) HUNG (still running 15 s later)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$1(ClassicKafkaConsumer.java:1160)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1050)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1156)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1130)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1112)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1877)
+heartbeat threads alive after close(): 2
+RESULT: BUG
+
+######## stock kafka-clients 4.4.0, round 2 of 5 
+fenced heartbeats 1, FencedInstanceIdException caught 1; rejoined; then a rebalance: its JoinGroup in flight
+heartbeat threads before close():
+    #26 WAITING  dropped by pollHeartbeat, not closed
+    #28 WAITING  the consumer's current heartbeat thread
+close(PT5S) HUNG (still running 15 s later)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$1(ClassicKafkaConsumer.java:1160)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1050)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1156)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1130)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1112)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1877)
+heartbeat threads alive after close(): 2
+RESULT: BUG
+
+######## stock kafka-clients 4.4.0, round 3 of 5 
+fenced heartbeats 1, FencedInstanceIdException caught 1; rejoined; then a rebalance: its JoinGroup in flight
+heartbeat threads before close():
+    #26 WAITING  dropped by pollHeartbeat, not closed
+    #28 WAITING  the consumer's current heartbeat thread
+close(PT5S) HUNG (still running 15 s later)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$1(ClassicKafkaConsumer.java:1160)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1050)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1156)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1130)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1112)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1877)
+heartbeat threads alive after close(): 2
+RESULT: BUG
+
+######## stock kafka-clients 4.4.0, round 4 of 5 
+fenced heartbeats 1, FencedInstanceIdException caught 1; rejoined; then a rebalance: its JoinGroup in flight
+heartbeat threads before close():
+    #26 WAITING  dropped by pollHeartbeat, not closed
+    #28 WAITING  the consumer's current heartbeat thread
+close(PT5S) HUNG (still running 15 s later)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$1(ClassicKafkaConsumer.java:1160)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1050)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1156)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1130)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1112)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1877)
+heartbeat threads alive after close(): 2
+RESULT: BUG
+
+######## stock kafka-clients 4.4.0, round 5 of 5 
+fenced heartbeats 1, FencedInstanceIdException caught 1; rejoined; then a rebalance: its JoinGroup in flight
+heartbeat threads before close():
+    #26 WAITING  dropped by pollHeartbeat, not closed
+    #28 WAITING  the consumer's current heartbeat thread
+close(PT5S) HUNG (still running 15 s later)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$1(ClassicKafkaConsumer.java:1160)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1050)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1156)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1130)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1112)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1877)
+heartbeat threads alive after close(): 2
+RESULT: BUG
+
+SUMMARY stock kafka-clients 4.4.0: 5 rounds, close() hung 5, heartbeat threads left after close() 5, OK 0
+
+######## fixed kafka-clients 4.4.0, round 1 of 5 
+fenced heartbeats 1, FencedInstanceIdException caught 1; rejoined; then a rebalance: its JoinGroup in flight
+heartbeat threads before close():
+    #28 WAITING  the consumer's current heartbeat thread
+close(PT5S) returned in 5022 ms
+heartbeat threads alive after close(): 0
+RESULT: OK
+
+######## fixed kafka-clients 4.4.0, round 2 of 5 
+fenced heartbeats 1, FencedInstanceIdException caught 1; rejoined; then a rebalance: its JoinGroup in flight
+heartbeat threads before close():
+    #28 WAITING  the consumer's current heartbeat thread
+close(PT5S) returned in 5033 ms
+heartbeat threads alive after close(): 0
+RESULT: OK
+
+######## fixed kafka-clients 4.4.0, round 3 of 5 
+fenced heartbeats 1, FencedInstanceIdException caught 1; rejoined; then a rebalance: its JoinGroup in flight
+heartbeat threads before close():
+    #28 WAITING  the consumer's current heartbeat thread
+close(PT5S) returned in 5017 ms
+heartbeat threads alive after close(): 0
+RESULT: OK
+
+######## fixed kafka-clients 4.4.0, round 4 of 5 
+fenced heartbeats 1, FencedInstanceIdException caught 1; rejoined; then a rebalance: its JoinGroup in flight
+heartbeat threads before close():
+    #28 WAITING  the consumer's current heartbeat thread
+close(PT5S) returned in 5009 ms
+heartbeat threads alive after close(): 0
+RESULT: OK
+
+######## fixed kafka-clients 4.4.0, round 5 of 5 
+fenced heartbeats 1, FencedInstanceIdException caught 1; rejoined; then a rebalance: its JoinGroup in flight
+heartbeat threads before close():
+    #28 WAITING  the consumer's current heartbeat thread
+close(PT5S) returned in 5022 ms
+heartbeat threads alive after close(): 0
+RESULT: OK
+
+SUMMARY fixed kafka-clients 4.4.0: 5 rounds, close() hung 0, heartbeat threads left after close() 0, OK 5

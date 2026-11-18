@@ -1,0 +1,34 @@
+diff --git a/clients/src/main/java/org/apache/kafka/clients/consumer/internals/AbstractCoordinator.java b/clients/src/main/java/org/apache/kafka/clients/consumer/internals/AbstractCoordinator.java
+index f177dad..632b8a3 100644
+--- a/clients/src/main/java/org/apache/kafka/clients/consumer/internals/AbstractCoordinator.java
++++ b/clients/src/main/java/org/apache/kafka/clients/consumer/internals/AbstractCoordinator.java
+@@ -362,9 +362,10 @@ public abstract class AbstractCoordinator implements Closeable {
+     protected synchronized void pollHeartbeat(long now) {
+         if (heartbeatThread != null) {
+             if (heartbeatThread.hasFailed()) {
+-                // set the heartbeat thread to null and raise an exception. If the user catches it,
++                // close the heartbeat thread, set it to null and raise an exception. If the user catches it,
+                 // the next call to ensureActiveGroup() will spawn a new heartbeat thread.
+                 RuntimeException cause = heartbeatThread.failureCause();
++                heartbeatThread.close();
+                 heartbeatThread = null;
+                 throw cause;
+             }
+@@ -1450,7 +1451,7 @@ public abstract class AbstractCoordinator implements Closeable {
+                 log.debug("Enabling heartbeat thread");
+                 this.enabled = true;
+                 heartbeat.resetTimeouts();
+-                AbstractCoordinator.this.notify();
++                AbstractCoordinator.this.notifyAll();
+             }
+         }
+ 
+@@ -1464,7 +1465,7 @@ public abstract class AbstractCoordinator implements Closeable {
+         public void close() {
+             synchronized (AbstractCoordinator.this) {
+                 this.closed = true;
+-                AbstractCoordinator.this.notify();
++                AbstractCoordinator.this.notifyAll();
+             }
+         }
+ 

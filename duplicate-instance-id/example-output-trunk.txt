@@ -1,0 +1,330 @@
+broker up (Kafka 4.4.0, localhost:19111)
+Note: Recompile with -Xlint:removal for details.
+
+######## stock trunk, 10 rounds
+
+## stock trunk, round 1
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #26 TIMED_WAITING  S's
+    #31 WAITING  N's
+    #25 WAITING  no consumer's: dropped by A's pollHeartbeat after the fence, not closed
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) HUNG (still running after 30 s)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$5(ClassicKafkaConsumer.java:1180)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1043)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1176)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1150)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1132)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1975)
+heartbeat threads alive after closing A, A2, S, N: 2
+ROUND hung -1 leaked 2
+
+## stock trunk, round 2
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #25 WAITING  no consumer's: dropped by A's pollHeartbeat after the fence, not closed
+    #31 WAITING  N's
+    #26 TIMED_WAITING  S's
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) HUNG (still running after 30 s)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$5(ClassicKafkaConsumer.java:1180)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1043)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1176)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1150)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1132)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1975)
+heartbeat threads alive after closing A, A2, S, N: 2
+ROUND hung -1 leaked 2
+
+## stock trunk, round 3
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #25 TIMED_WAITING  S's
+    #29 WAITING  A's current heartbeat thread
+    #26 WAITING  no consumer's: dropped by A's pollHeartbeat after the fence, not closed
+    #31 WAITING  N's
+A: close(PT5S) HUNG (still running after 30 s)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$5(ClassicKafkaConsumer.java:1180)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1043)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1176)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1150)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1132)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1975)
+heartbeat threads alive after closing A, A2, S, N: 2
+ROUND hung -1 leaked 2
+
+## stock trunk, round 4
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #25 TIMED_WAITING  S's
+    #29 WAITING  A's current heartbeat thread
+    #26 WAITING  no consumer's: dropped by A's pollHeartbeat after the fence, not closed
+    #31 WAITING  N's
+A: close(PT5S) HUNG (still running after 30 s)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$5(ClassicKafkaConsumer.java:1180)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1043)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1176)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1150)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1132)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1975)
+heartbeat threads alive after closing A, A2, S, N: 2
+ROUND hung -1 leaked 2
+
+## stock trunk, round 5
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #29 WAITING  A's current heartbeat thread
+    #26 TIMED_WAITING  S's
+    #31 WAITING  N's
+    #25 WAITING  no consumer's: dropped by A's pollHeartbeat after the fence, not closed
+A: close(PT5S) HUNG (still running after 30 s)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$5(ClassicKafkaConsumer.java:1180)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1043)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1176)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1150)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1132)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1975)
+heartbeat threads alive after closing A, A2, S, N: 2
+ROUND hung -1 leaked 2
+
+## stock trunk, round 6
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #29 WAITING  A's current heartbeat thread
+    #25 WAITING  no consumer's: dropped by A's pollHeartbeat after the fence, not closed
+    #31 WAITING  N's
+    #26 TIMED_WAITING  S's
+A: close(PT5S) HUNG (still running after 30 s)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$5(ClassicKafkaConsumer.java:1180)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1043)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1176)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1150)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1132)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1975)
+heartbeat threads alive after closing A, A2, S, N: 2
+ROUND hung -1 leaked 2
+
+## stock trunk, round 7
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #26 WAITING  no consumer's: dropped by A's pollHeartbeat after the fence, not closed
+    #31 WAITING  N's
+    #25 TIMED_WAITING  S's
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) HUNG (still running after 30 s)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$5(ClassicKafkaConsumer.java:1180)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1043)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1176)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1150)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1132)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1975)
+heartbeat threads alive after closing A, A2, S, N: 2
+ROUND hung -1 leaked 2
+
+## stock trunk, round 8
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #26 WAITING  no consumer's: dropped by A's pollHeartbeat after the fence, not closed
+    #31 WAITING  N's
+    #25 TIMED_WAITING  S's
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) HUNG (still running after 30 s)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$5(ClassicKafkaConsumer.java:1180)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1043)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1176)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1150)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1132)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1975)
+heartbeat threads alive after closing A, A2, S, N: 2
+ROUND hung -1 leaked 2
+
+## stock trunk, round 9
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #26 TIMED_WAITING  S's
+    #31 WAITING  N's
+    #25 WAITING  no consumer's: dropped by A's pollHeartbeat after the fence, not closed
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) HUNG (still running after 30 s)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$5(ClassicKafkaConsumer.java:1180)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1043)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1176)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1150)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1132)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1975)
+heartbeat threads alive after closing A, A2, S, N: 2
+ROUND hung -1 leaked 2
+
+## stock trunk, round 10
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #25 TIMED_WAITING  S's
+    #31 WAITING  N's
+    #26 WAITING  no consumer's: dropped by A's pollHeartbeat after the fence, not closed
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) HUNG (still running after 30 s)
+    at java.base/java.lang.Thread.join(Thread.java:2079)
+    at java.base/java.lang.Thread.join(Thread.java:2155)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.closeHeartbeatThread(AbstractCoordinator.java:443)
+    at org.apache.kafka.clients.consumer.internals.AbstractCoordinator.close(AbstractCoordinator.java:1129)
+    at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator.close(ConsumerCoordinator.java:1030)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.lambda$close$5(ClassicKafkaConsumer.java:1180)
+    at org.apache.kafka.common.utils.Utils.swallow(Utils.java:1043)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1176)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1150)
+    at org.apache.kafka.clients.consumer.internals.ClassicKafkaConsumer.close(ClassicKafkaConsumer.java:1132)
+    at org.apache.kafka.clients.consumer.KafkaConsumer.close(KafkaConsumer.java:1975)
+heartbeat threads alive after closing A, A2, S, N: 2
+ROUND hung -1 leaked 2
+
+SUMMARY stock trunk: 10 rounds, close() hung 10, returned 0 (ms:), heartbeat threads left 10, round errors 0
+
+######## trunk+fix, 10 rounds
+
+## trunk+fix, round 1
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #26 TIMED_WAITING  S's
+    #31 WAITING  N's
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) returned in 5072 ms
+heartbeat threads alive after closing A, A2, S, N: 0
+ROUND returned 5072 leaked 0
+
+## trunk+fix, round 2
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #25 TIMED_WAITING  S's
+    #31 WAITING  N's
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) returned in 5081 ms
+heartbeat threads alive after closing A, A2, S, N: 0
+ROUND returned 5081 leaked 0
+
+## trunk+fix, round 3
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #31 WAITING  N's
+    #29 WAITING  A's current heartbeat thread
+    #26 TIMED_WAITING  S's
+A: close(PT5S) returned in 5099 ms
+heartbeat threads alive after closing A, A2, S, N: 0
+ROUND returned 5099 leaked 0
+
+## trunk+fix, round 4
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #25 TIMED_WAITING  S's
+    #31 WAITING  N's
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) returned in 5056 ms
+heartbeat threads alive after closing A, A2, S, N: 0
+ROUND returned 5056 leaked 0
+
+## trunk+fix, round 5
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #25 TIMED_WAITING  S's
+    #31 WAITING  N's
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) returned in 5054 ms
+heartbeat threads alive after closing A, A2, S, N: 0
+ROUND returned 5054 leaked 0
+
+## trunk+fix, round 6
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #25 TIMED_WAITING  S's
+    #31 WAITING  N's
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) returned in 5074 ms
+heartbeat threads alive after closing A, A2, S, N: 0
+ROUND returned 5074 leaked 0
+
+## trunk+fix, round 7
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #31 WAITING  N's
+    #29 WAITING  A's current heartbeat thread
+    #26 TIMED_WAITING  S's
+A: close(PT5S) returned in 5092 ms
+heartbeat threads alive after closing A, A2, S, N: 0
+ROUND returned 5092 leaked 0
+
+## trunk+fix, round 8
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #26 TIMED_WAITING  S's
+    #29 WAITING  A's current heartbeat thread
+    #31 WAITING  N's
+A: close(PT5S) returned in 5066 ms
+heartbeat threads alive after closing A, A2, S, N: 0
+ROUND returned 5066 leaked 0
+
+## trunk+fix, round 9
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #26 TIMED_WAITING  S's
+    #29 WAITING  A's current heartbeat thread
+    #31 WAITING  N's
+A: close(PT5S) returned in 5053 ms
+heartbeat threads alive after closing A, A2, S, N: 0
+ROUND returned 5053 leaked 0
+
+## trunk+fix, round 10
+A: fenced 1 time(s), rebalance in progress (A's JoinGroup waiting for S)
+heartbeat threads before A's close():
+    #25 TIMED_WAITING  S's
+    #31 WAITING  N's
+    #29 WAITING  A's current heartbeat thread
+A: close(PT5S) returned in 5079 ms
+heartbeat threads alive after closing A, A2, S, N: 0
+ROUND returned 5079 leaked 0
+
+SUMMARY trunk+fix: 10 rounds, close() hung 0, returned 10 (ms: 5072 5081 5099 5056 5054 5074 5092 5066 5053 5079), heartbeat threads left 0, round errors 0

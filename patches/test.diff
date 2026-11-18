@@ -1,0 +1,35 @@
+diff --git a/clients/src/test/java/org/apache/kafka/clients/consumer/internals/AbstractCoordinatorTest.java b/clients/src/test/java/org/apache/kafka/clients/consumer/internals/AbstractCoordinatorTest.java
+index 1afc3099af..71c61bfcae 100644
+--- a/clients/src/test/java/org/apache/kafka/clients/consumer/internals/AbstractCoordinatorTest.java
++++ b/clients/src/test/java/org/apache/kafka/clients/consumer/internals/AbstractCoordinatorTest.java
+@@ -1074,6 +1074,30 @@ public class AbstractCoordinatorTest {
+             "Expected pollHeartbeat to raise fenced instance id exception in 1 second");
+     }
+ 
++    @Test
++    public void testPollHeartbeatClosesFencedHeartbeatThread() throws Exception {
++        setupCoordinator(RETRY_BACKOFF_MS, RETRY_BACKOFF_MAX_MS, REBALANCE_TIMEOUT_MS,
++            Optional.of("instance-1"), Optional.empty());
++        joinGroup();
++        final BaseHeartbeatThread fencedThread = coordinator.heartbeatThread();
++
++        mockClient.prepareResponse(heartbeatResponse(Errors.FENCED_INSTANCE_ID));
++        mockTime.sleep(HEARTBEAT_INTERVAL_MS);
++        assertThrows(FencedInstanceIdException.class,
++            () -> {
++                long startMs = System.currentTimeMillis();
++                while (System.currentTimeMillis() - startMs < 5000) {
++                    Thread.sleep(10);
++                    coordinator.pollHeartbeat(mockTime.milliseconds());
++                }
++            },
++            "Expected pollHeartbeat to raise fenced instance id exception in 5 seconds");
++
++        // pollHeartbeat drops the failed thread; it must exit rather than stay parked on the coordinator
++        fencedThread.join(5000);
++        assertFalse(fencedThread.isAlive(), "The fenced heartbeat thread should have exited");
++    }
++
+     @Test
+     public void testJoinGroupRequestWithGroupInstanceIdNotFound() {
+         setupCoordinator();
